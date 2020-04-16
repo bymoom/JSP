@@ -1,0 +1,37 @@
+package com.jsp.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.jsp.utils.GetUploadPath;
+
+/**
+ * 상세 정보에서 사진 띄우기 (사용자가 어떤 처리를 요청하는건 아니기 때문에 doGet) 
+ *
+ */
+@WebServlet("/member/picture/get")
+public class GetPictureServlet extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String fileName = request.getParameter("picture");
+		String savedPath = GetUploadPath.getUploadPath("member.picture.upload");
+		
+		String filePath = savedPath + fileName;
+		
+		sendFile(response, filePath);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doGet(request, response);
+	}
+	
+	//사용자에게 사진 경로 보내야하기때문에 response 필요
+	private void sendFile(HttpServletResponse response, String filePath) throws ServletException, IOException {
+		
+	}
+
+}

@@ -1,0 +1,37 @@
+package com.jsp.filter;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+
+// ("/*") : request가 올때마다 모든 것에 적용한다는 뜻
+@WebFilter("/*")
+public class FilterTest implements Filter {
+
+	//톰캣이 종료될때 이 instance를 버릴때 실행되는 destroy
+	public void destroy() {
+		System.out.println("Filter : destroy()");
+	}
+
+	//Get이건 Post이건 상관없이 요청을 받는다
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		HttpServletRequest httpReq = (HttpServletRequest) request;
+		
+		System.out.println("Filter : doFilter() : " + httpReq.getRequestURI());
+		
+		chain.doFilter(request, response);
+	}
+
+	//요청이 들어올때 최초로 딱 한번 실행
+	public void init(FilterConfig fConfig) throws ServletException {
+		System.out.println("Filter : init()");
+	}
+
+}

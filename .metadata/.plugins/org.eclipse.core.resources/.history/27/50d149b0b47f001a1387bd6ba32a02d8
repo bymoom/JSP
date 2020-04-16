@@ -1,0 +1,36 @@
+package com.jsp.listener;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.jsp.dao.MemberDAO;
+import com.jsp.dao.MemberDAOImpl;
+import com.jsp.mybatis.OracleMyBatisSqlSessionFactory;
+import com.jsp.service.MemberServiceImpl;
+
+@WebListener
+public class InitListener implements ServletContextListener {
+
+    public void contextDestroyed(ServletContextEvent sce)  { 
+         // TODO Auto-generated method stub
+    }
+
+    public void contextInitialized(ServletContextEvent sce)  { 
+    	String sqlSessionFactoryType = sce.getServletContext().getInitParameter("sqlSessionFactory");
+    	String memberDaoType = sce.getServletContext().getInitParameter("memberDAO");
+
+    	try {
+    		SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) Class.forName(sqlSessionFactoryType).newInstance();
+    		
+    		Class<?> cls = Class.forName(memberDaoType).newInstance();
+		} catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    }
+	
+}

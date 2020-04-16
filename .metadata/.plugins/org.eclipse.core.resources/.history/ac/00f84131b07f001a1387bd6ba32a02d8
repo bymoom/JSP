@@ -1,0 +1,22 @@
+package com.jsp.listener;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import com.jsp.mybatis.OracleMyBatisSqlSessionFactory;
+
+@WebListener
+public class InitListener implements ServletContextListener {
+
+    public void contextDestroyed(ServletContextEvent sce)  { 
+         // TODO Auto-generated method stub
+    }
+
+    public void contextInitialized(ServletContextEvent sce)  { 
+    	String sqlSessionFactoryType = sce.getServletContext().getInitParameter("sqlSessionFactory");
+    	
+    	OracleMyBatisSqlSessionFactory 
+    }
+	
+}

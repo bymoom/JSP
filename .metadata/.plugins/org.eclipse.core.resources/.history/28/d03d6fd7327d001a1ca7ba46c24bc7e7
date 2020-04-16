@@ -1,0 +1,17 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
+
+<script>
+	var stopBtnText = $('#stopBtn').text();
+	
+	if(stopBtnText == '정지'){
+		alert("${param.id}님의 사용을 정지합니다.");
+		$('#stopBtn').text('활성화');
+	}else{
+		alert("${param.id}님의 사용을 허가합니다.");
+		$('#stopBtn').text('정지');
+	}
+	
+	
+</script>

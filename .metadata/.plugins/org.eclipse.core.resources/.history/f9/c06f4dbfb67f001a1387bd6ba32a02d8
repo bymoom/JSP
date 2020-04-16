@@ -1,0 +1,44 @@
+package com.jsp.listener;
+
+import java.lang.reflect.Method;
+
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
+
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.jsp.dao.MemberDAO;
+import com.jsp.dao.MemberDAOImpl;
+import com.jsp.mybatis.OracleMyBatisSqlSessionFactory;
+import com.jsp.service.MemberServiceImpl;
+
+@WebListener
+public class InitListener implements ServletContextListener {
+
+    public void contextDestroyed(ServletContextEvent sce)  { 
+         // TODO Auto-generated method stub
+    }
+
+    public void contextInitialized(ServletContextEvent sce)  { 
+    	String sqlSessionFactoryType = sce.getServletContext().getInitParameter("sqlSessionFactory");
+    	String memberDaoType = sce.getServletContext().getInitParameter("memberDAO");
+
+    	try {
+    		SqlSessionFactory sqlSessionFactory = (SqlSessionFactory) Class.forName(sqlSessionFactoryType).newInstance();
+    		
+    		//daoImpl에 어떤 타입의 메소드, 클래스가 있을지 몰라서 와일드카드 사용
+    		Class<?> cls = Class.forName(memberDaoType);
+    		
+    		Method setSqlSessionFactory = cls.getMethod("setSessionFactory", SqlSessionFactory.class);
+    		
+    		Object obj = cls.newInstance();
+    		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    }
+	
+}

@@ -1,0 +1,5 @@
+package com.jsp.utils;
+
+public class MakeLogForException {
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;MemberVO.java&apos; to &apos;JSP_AdminLTE3/src/com.jsp.dto&apos;&#x0D;&#x0A;- Original project: &apos;PROJ_Login&apos;&#x0D;&#x0A;- Destination element: &apos;JSP_AdminLTE3/src/com.jsp.dto&apos;&#x0D;&#x0A;- Original element: &apos;com.jsp.dto.MemberVO.java&apos;" description="Copy compilation unit" destination="=JSP_AdminLTE3/src&lt;com.jsp.dto" element1="/src&lt;com.jsp.dto{MemberVO.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1586155924860" units="1" version="1.0"/>
+</session>

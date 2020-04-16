@@ -1,0 +1,39 @@
+package com.jsp.servlet;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/member/picture")
+public class UploadPictureServilet extends HttpServlet {
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//get으로 오면 아무것도 실행하지 않겠다
+		return;
+	}
+
+	//업로드 파일 환경 설정
+	//필드에 쓰는 이유 : 다른 사람들에게 경각심을 주기 위해, 가독성 높임
+	private static final int MEMORY_THRESHOLD = 1024 * 500; //500KB
+	private static final int MAX_FILE_SIZE = 1024 * 1024 * 1; //1MB
+	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 2; //2MB
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String fileName = saveFile(request, response);
+		
+		response.setCharacterEncoding("utf-8");
+		PrintWriter out = response.getWriter();
+		
+		out.print(fileName);
+	}
+
+	private String saveFile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		return "fileName.jpg";
+	}
+}

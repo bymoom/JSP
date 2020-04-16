@@ -1,0 +1,52 @@
+package com.jsp.filter;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.jsp.dto.MemberVO;
+import com.jsp.utils.ViewResolver;
+
+//web.xml에 등록할거라 어노테이션 지움
+public class LoginCheckFilter implements Filter {
+
+	public void destroy() {
+		// TODO Auto-generated method stub
+	}
+
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
+		
+		//브라우저의 request, response가 필요해서 HttpServlet 사용
+		HttpServletRequest httpReq = (HttpServletRequest) request;
+		HttpServletResponse httpResp = (HttpServletResponse) response;
+		
+		HttpSession session = httpReq.getSession();
+		
+		MemberVO loginUser = (MemberVO) session.getAttribute("loginUser");
+		
+		//login 확인
+		if(loginUser==null) {
+			//메시지를 띄우려면 jsp로 forward해야함.
+			//새 창으로 작업중이었을때인지 부모창에서 작업중이었는지 알 수 없기때문에 어떻게 화면 전환할지 jsp에게 넘긴다
+			String url = "commons/loginCheck";
+			ViewResolver.view(httpReq, httpResp, url);
+		}else {
+			chain.doFilter(request, response);
+		}
+	}
+
+	//doFilter는 init의 존재를 몰라ㅠㅠㅠㅠ
+	//init -> doFilter 순서로 메서드가 실행됨
+	public void init(FilterConfig fConfig) throws ServletException {
+		// TODO Auto-generated method stub
+	}
+
+}
