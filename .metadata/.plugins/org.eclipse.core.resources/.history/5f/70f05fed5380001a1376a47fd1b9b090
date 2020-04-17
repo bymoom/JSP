@@ -1,0 +1,9 @@
+package com.jsp.request;
+
+public class SearchCriteria {
+
+	private int page; //페이지 번호
+	private int perPageNum; //한페이지당 리스트개수
+	private String searchType; //검색구분
+	private String keyword; //검색어
+}
