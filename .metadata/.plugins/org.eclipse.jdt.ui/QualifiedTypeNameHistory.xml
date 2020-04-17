@@ -3,17 +3,13 @@
 <fullyQualifiedTypeName name="java.lang.Override"/>
 <fullyQualifiedTypeName name="javax.websocket.Session"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactoryBuilder"/>
-<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
 <fullyQualifiedTypeName name="com.jsp.mybatis.OracleMyBatisSqlSessionFactoryBuilder"/>
-<fullyQualifiedTypeName name="com.jsp.dao.MemberDAO"/>
-<fullyQualifiedTypeName name="com.jsp.dao.MemberDAOImpl"/>
 <fullyQualifiedTypeName name="com.jsp.exception.NotFoundIDException"/>
 <fullyQualifiedTypeName name="org.eclipse.jdt.internal.compiler.ast.ThrowStatement"/>
 <fullyQualifiedTypeName name="com.jsp.exception.InvalidPasswordException"/>
 <fullyQualifiedTypeName name="java.io.Reader"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.io.Resources"/>
 <fullyQualifiedTypeName name="java.util.Properties"/>
-<fullyQualifiedTypeName name="java.io.PrintWriter"/>
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.disk.DiskFileItemFactory"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload"/>
@@ -22,7 +18,6 @@
 <fullyQualifiedTypeName name="org.apache.commons.fileupload.FileItem"/>
 <fullyQualifiedTypeName name="java.util.UUID"/>
 <fullyQualifiedTypeName name="com.jsp.utils.MakeFileName"/>
-<fullyQualifiedTypeName name="java.lang.Exception"/>
 <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
 <fullyQualifiedTypeName name="java.util.Date"/>
 <fullyQualifiedTypeName name="java.io.BufferedWriter"/>
@@ -40,7 +35,6 @@
 <fullyQualifiedTypeName name="java.io.OutputStream"/>
 <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
-<fullyQualifiedTypeName name="com.jsp.service.MemberServiceImpl"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
@@ -50,4 +44,17 @@
 <fullyQualifiedTypeName name="com.jsp.dto.MemberVO"/>
 <fullyQualifiedTypeName name="com.jsp.utils.ViewResolver"/>
 <fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="com.jsp.test.Child"/>
+<fullyQualifiedTypeName name="com.jsp.test.Parent"/>
+<fullyQualifiedTypeName name="com.jsp.service.MemberService"/>
+<fullyQualifiedTypeName name="com.jsp.mybatis.OracleMyBatisSqlSessionFactory"/>
+<fullyQualifiedTypeName name="com.jsp.dao.MemberDAOImpl"/>
+<fullyQualifiedTypeName name="java.lang.Class"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Method"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
+<fullyQualifiedTypeName name="java.lang.Exception"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.jsp.dao.MemberDAO"/>
+<fullyQualifiedTypeName name="com.jsp.service.MemberServiceImpl"/>
 </qualifiedTypeNameHistroy>

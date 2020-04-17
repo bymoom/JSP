@@ -1,15 +1,16 @@
 package com.jsp.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
-
-import org.eclipse.jdt.internal.compiler.ast.ThrowStatement;
+import java.util.Map;
 
 import com.jsp.dao.MemberDAO;
-import com.jsp.dao.MemberDAOImpl;
 import com.jsp.dto.MemberVO;
 import com.jsp.exception.InvalidPasswordException;
 import com.jsp.exception.NotFoundIDException;
+import com.jsp.request.PageMaker;
+import com.jsp.request.SearchCriteria;
 
 public class MemberServiceImpl implements MemberService {
 
@@ -59,13 +60,31 @@ public class MemberServiceImpl implements MemberService {
 	public void remove(String id) throws SQLException {
 		memberDAO.deleteMember(id);
 	}
+	
 	@Override
 	public void disabledMember(String id) throws SQLException {
 		memberDAO.disabledMember(id);
 	}
+	
 	@Override
 	public void enabledMember(String id) throws SQLException {
 		memberDAO.enabledMember(id);
+	}
+	
+	@Override
+	public Map<String, Object> getMemberList(SearchCriteria cri) throws SQLException {
+		List<MemberVO> memberList = memberDAO.selectMemberList(cri);
+		
+		PageMaker pageMaker = new PageMaker();
+		//순서 중요함 -> cri부터 안 넘기면 null 뜸(이유는 PageMaker 클래스에서 calcData() 메소드 잘 들여다볼것)
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(memberDAO.selectMemberListCount(cri));
+		
+		Map<String, Object> dataMap = new HashMap<String, Object>();
+		dataMap.put("memberList", memberList);
+		dataMap.put("pageMaker", pageMaker);
+		
+		return dataMap;
 	}
 
 }

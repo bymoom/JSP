@@ -33,6 +33,8 @@ E:\A_TeachingMaterial\6.JspSpring\workspace\.metadata\.plugins\org.eclipse.jst.j
 \JSP_Bootstrap\src
 E:\A_TeachingMaterial\6.JspSpring\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\677179677.index
 \JSP_02\src
+E:\A_TeachingMaterial\6.JspSpring\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1205423292.index
+\JSP_AdminLTE3\src
 E:\A_TeachingMaterial\6.JspSpring\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3969159175.index
 \JSP_AdminLTE3\src
 E:\A_TeachingMaterial\6.JspSpring\workspace\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2961928268.index

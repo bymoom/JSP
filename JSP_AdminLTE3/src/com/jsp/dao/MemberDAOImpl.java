@@ -3,10 +3,12 @@ package com.jsp.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.jsp.dto.MemberVO;
+import com.jsp.request.SearchCriteria;
 
 public class MemberDAOImpl implements MemberDAO {
 
@@ -81,6 +83,35 @@ public class MemberDAOImpl implements MemberDAO {
 		SqlSession sesssion = sessionFactory.openSession(true);
 		sesssion.update("Member-Mapper.enabledMember", id);
 		sesssion.close();
+	}
+
+	@Override
+	public List<MemberVO> selectMemberList(SearchCriteria cri) throws SQLException {
+		SqlSession sesssion = sessionFactory.openSession();
+		
+		int offset = cri.getPageStartRowNum(); //offset : 기준 (한 페이지의 첫 글번호)
+		int limit = cri.getPerPageNum();
+		
+		RowBounds rowBounds = new RowBounds(offset, limit); //매퍼에 얘를 보내면 정해준 개수만큼 데이터를 알아서 잘라 보내줌
+		
+		List<MemberVO> memberList = null;
+		
+		memberList = sesssion.selectList("Member-Mapper.selectSearchMemberList", cri, rowBounds);
+		
+		sesssion.close();
+		return memberList;
+	}
+
+	@Override
+	public int selectMemberListCount(SearchCriteria cri) throws SQLException {
+		int count = 0;
+		
+		SqlSession sesssion = sessionFactory.openSession(true);
+		
+		count = sesssion.selectOne("Member-Mapper.selectSearchMemberListCount", cri);
+		
+		sesssion.close();
+		return count;
 	}
 
 }
