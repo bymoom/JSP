@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Board-Mapper">
+	
+	<!-- 전체 조회 -->
+	<!-- parameterType="com.jsp.request.SearchCriteria" -->
+	<select id="selectBoardCriteria" resultType="board">
+		select *
+		from board
+		where writer is not null
+		<include refid="search" />
+		order by regDate desc
+	</select>
+	
+	<!-- 검색 결과 개수 -->
+	<!-- parameterType="com.jsp.request.SearchCriteria" -->
+	<select id="selectBoardCriteriaTotalCount" resultType="int">
+		select count(*)
+		from board
+		where writer is not null
+		<include refid="search" />
+		order by regDate desc
+	</select>
+	
+	<sql id="search">
+		<if test="searchType == 'tcw'.toString()">
+			and (title like '%'||#{keyword}||'%'
+					or content like '%'||#{keyword}||'%'
+					or writer like '%'||#{keyword}||'%')
+		</if>
+		<if test="searchType == 't'.toString()">
+			and title like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'w'.toString()">
+			and writer like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'c'.toString()">
+			and content like '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType == 'tc'.toString()">
+			and (title like '%'||#{keyword}||'%'
+					or content like '%'||#{keyword}||'%')
+		</if>
+		<if test="searchType == 'cw'.toString()">
+			and (content like '%'||#{keyword}||'%'
+					or writer like '%'||#{keyword}||'%')
+		</if>
+	</sql>
+	
+	<select id="selectBoardByBno" parameterType="int" resultType="board">
+		select *
+		from board
+		where bno=#{bno}
+	</select>
+	
+	<update id="insertBoard" parameterType="board">
+		insert into
+		board (bno, title, writer, content, regdate, updatedate)
+		values (#{bno}, #{title}, #{writer}, #{content}, sysdate, sysdate)
+	</update>
+	
+	<update id="updateBoard" parameterType="board">
+		update board
+		set
+		title=#{title}, content=#{content}, updatedate=sysdate
+		where bno=#{bno}
+	</update>
+	
+	<update id="deleteBoard" parameterType="int">
+		delete
+		from board
+		where bno=#{bno}
+	</update>
+	
+	<update id="increaseViewCnt" parameterType="int">
+		update board
+		set viewcnt = viewcnt + 1
+		where bno = #{bno}
+	</update>
+	
+	<select id="selectBoardSeqNext" resultType="int">
+		select board_seq.nextval as bno from dual
+	</select>
+	
+</mapper>	

@@ -4,6 +4,6 @@
 
 <script>
 	alert("${param.id}님의 정보를 수정했습니다.");
-	location.href="detail?id=${param.id}";
+	location.href="detail.do?id=${param.id}";
 	window.opener.location.reload(true);
 </script>

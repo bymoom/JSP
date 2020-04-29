@@ -66,7 +66,7 @@
 		
 		//processData : false, contentType : false -> form 객체를 보낼때 꼭 해줘야함. form객체에 이미 내장되어있음
 		$.ajax({
-			url : "<%= request. getContextPath() %>/member/picture",
+			url : "<%= request.getContextPath() %>/member/picture.do",
 			data : form,
 			type : 'post',
 			processData : false,

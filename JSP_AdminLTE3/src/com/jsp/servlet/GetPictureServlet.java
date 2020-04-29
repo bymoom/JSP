@@ -18,7 +18,7 @@ import com.jsp.utils.GetUploadPath;
  * 상세 정보에서 사진 띄우기 (사용자가 어떤 처리를 요청하는건 아니기 때문에 doGet) 
  *
  */
-@WebServlet("/member/picture/get")
+//@WebServlet("/member/picture/get")
 public class GetPictureServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

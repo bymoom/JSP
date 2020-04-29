@@ -14,15 +14,39 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
-import com.jsp.utils.ViewResolver;
 
 //@WebFilter("/MemberDisabledFilter")
 public class MemberDisabledFilter implements Filter {
 
 	//uri 값이 일정하면 set을 사용해도 좋지만 uri 뒤에 붙는 쿼리 스트링때문에 list로 결정
 	private List<String> checkURLs = new ArrayList<String>();
+	private ViewResolver viewResolver;
+	
+	public void init(FilterConfig fConfig) throws ServletException {
+		String paramValue = fConfig.getInitParameter("checkURL");
 		
+		StringTokenizer st = new StringTokenizer(paramValue, ",");
+		
+		while(st.hasMoreTokens()) {
+			String urlkey = st.nextToken();
+			checkURLs.add(urlkey);
+		}
+		
+		String viewResolverType = fConfig.getInitParameter("viewResolver");
+		
+		
+		try {
+			Class<?> cls = Class.forName(viewResolverType);
+			this.viewResolver = (ViewResolver) cls.newInstance();
+			System.out.println("[MemberDisabledFilter] " + viewResolver + "가 준비되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[MemberDisabledFilter] " + viewResolver + "가 준비되지 않았습니다.");
+		}
+	}
+
 	public void destroy() {
 		// TODO Auto-generated method stub
 	}
@@ -43,7 +67,7 @@ public class MemberDisabledFilter implements Filter {
 			for(String url : checkURLs) {
 				if(uri.contains(url)) { //url : 필터 먹일 주소 / uri : 사용자의 요청 주소 -> url이 uri에 포함되어있는가? 
 					url = "commons/memberDisabled";
-					ViewResolver.view(httpReq, httpRes, url);
+					viewResolver.view(httpReq, httpRes, url);
 					return;
 				}
 			}
@@ -53,15 +77,5 @@ public class MemberDisabledFilter implements Filter {
 		
 	}
 
-	public void init(FilterConfig fConfig) throws ServletException {
-		String paramValue = fConfig.getInitParameter("checkURL");
-		
-		StringTokenizer st = new StringTokenizer(paramValue, ",");
-		
-		while(st.hasMoreTokens()) {
-			String urlkey = st.nextToken();
-			checkURLs.add(urlkey);
-		}
-	}
 	
 }

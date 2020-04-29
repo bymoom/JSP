@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.jsp.dao.MemberDAO;
+import com.jsp.dao.MemberDAOImpl;
 import com.jsp.dto.MemberVO;
 import com.jsp.exception.InvalidPasswordException;
 import com.jsp.exception.NotFoundIDException;
@@ -15,14 +16,13 @@ import com.jsp.request.SearchCriteria;
 public class MemberServiceImpl implements MemberService {
 
 
-	private static MemberServiceImpl instance = new MemberServiceImpl();
+	/*private static MemberServiceImpl instance; // = new MemberServiceImpl();
 	private MemberServiceImpl() {}
 	public static MemberServiceImpl getInstance() {
 		return instance;
-	}
+	}*/
 	
 	private MemberDAO memberDAO;
-	/*= MemberDAOImpl.getInstance();*/
 	public void setMemberDAO(MemberDAO memberDAO) {
 		this.memberDAO = memberDAO;
 	}

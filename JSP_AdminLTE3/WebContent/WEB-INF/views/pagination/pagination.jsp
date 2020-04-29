@@ -45,13 +45,19 @@
 
 
 <script>
-function searchList_go(page){
+function searchList_go(page,url){
 	
 	var jobForm=$('#jobForm');
 	jobForm.find("[name='page']").val(page);
 	jobForm.find("[name='searchType']").val($('select[name="searchType"]').val());
 	jobForm.find("[name='keyword']").val($('div.input-group>input[name="keyword"]').val());	
-	jobForm.attr("action","list").attr("method","post");
+	jobForm.attr("method","post"); //주소줄에 값들 안나오게 하고 싶으면 post로 보낼것
+	if(url){
+		jobForm.attr("action",url)		
+	}else{
+		jobForm.attr("action","list.do")
+	}
+	
 	jobForm.submit();
 }
 </script>

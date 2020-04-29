@@ -1,7 +1,0 @@
-package com.jsp.test;
-
-public class Parent {
-
-	private Child child;
-	
-}

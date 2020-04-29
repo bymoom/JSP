@@ -12,13 +12,15 @@ import com.jsp.request.SearchCriteria;
 
 public class MemberDAOImpl implements MemberDAO {
 
+	/**
+	 * 싱글톤에서 의존주입(set메소드)로 변경
+	 */
 	/*// listener 사용하기 위해 싱글톤 주석
 	private static MemberDAOImpl instance = new MemberDAOImpl();
 	private MemberDAOImpl() {}
 	public static MemberDAOImpl getInstance() {
 		return instance;
 	}*/
-	
 	//SqlSessionFactory
 	private SqlSessionFactory sessionFactory;
 	/*= OracleMyBatisSqlSessionFactoryBuilder.getSqlSessionFactory();*/

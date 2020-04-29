@@ -32,7 +32,11 @@ public class PageMaker {
 		
 	}
 
-	public String makeQuery(int page) {
+	public String makeQuery() { //현재 페이지 유지할때 사용
+		return makeQuery(cri.getPage());
+	}
+	
+	public String makeQuery(int page) { //페이징할때 사용
 		String query="?page="+page
 					+"&perPageNum="+cri.getPerPageNum()
 					+"&searchType="+cri.getSearchType()

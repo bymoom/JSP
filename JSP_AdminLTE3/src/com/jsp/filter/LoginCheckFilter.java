@@ -16,14 +16,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
-import com.jsp.utils.ViewResolver;
 
 //web.xml에 등록할거라 어노테이션 지움
 public class LoginCheckFilter implements Filter {
 
 	//로그인 체크를 제외시킬 url들을 담을 list
 	private List<String> exURLs = new ArrayList<String>();
+	private ViewResolver viewResolver;
 	
 	public void destroy() {
 		// TODO Auto-generated method stub
@@ -61,7 +62,7 @@ public class LoginCheckFilter implements Filter {
 				url = "redirect:/commons/login";
 			}*/
 			//httpReq, httpResp : ViewResolver가 사용하는게 Http라서 이걸로 보냄
-			ViewResolver.view(httpReq, httpResp, url);
+			viewResolver.view(httpReq, httpResp, url);
 		}else {
 			chain.doFilter(request, response);
 		}
@@ -70,8 +71,6 @@ public class LoginCheckFilter implements Filter {
 	//doFilter는 init의 존재를 몰라ㅠㅠㅠㅠ 그래서 전역변수에 값을 넣어줘야함.
 	//init -> doFilter 순서로 메서드가 실행됨
 	public void init(FilterConfig fConfig) throws ServletException {
-		
-		System.out.println("FilterInit()");
 		
 		//web.xml에 설정한 exclude의 param을 가져온다
 		String excludeURLNames = fConfig.getInitParameter("exclude");
@@ -83,6 +82,21 @@ public class LoginCheckFilter implements Filter {
 			//전역변수인 exURLs list에 로그인체크를 제외할 url 넣기
 			exURLs.add(st.nextToken());
 		}
+
+		System.out.println("FilterInit()");
+
+
+		String viewResolverType = fConfig.getInitParameter("viewResolver");
+		
+		try {
+			Class<?> cls = Class.forName(viewResolverType);
+			this.viewResolver = (ViewResolver) cls.newInstance();
+			System.out.println("[LoginCheckFilter] " + viewResolver + "가 준비되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[LoginCheckFilter] " + viewResolver + "가 준비되지 않았습니다.");
+		}
+		
 	}
 
 	private boolean excludeCheck(String url) {
@@ -94,4 +108,5 @@ public class LoginCheckFilter implements Filter {
 		}
 		return false; //요청받은 url과 로그인체크를 제외할 url이 일치하지 않는 경우
 	}
+	
 }

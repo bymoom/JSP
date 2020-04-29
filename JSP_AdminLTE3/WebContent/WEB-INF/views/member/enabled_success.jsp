@@ -4,5 +4,5 @@
 
 <script>
 	alert("${param.id}님의 사용을 허가했습니다.");
-	location.href="detail?id=${param.id}";
+	location.href="detail.do?id=${param.id}";
 </script>

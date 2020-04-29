@@ -18,7 +18,9 @@
 
 <!-- REQUIRED SCRIPTS -->
 
-
+<!-- 
+js 용량이 크기 때문에 footer에 입력(header에 쓰면 로딩 속도가 길어짐) 
+-->
 <!-- Bootstrap 4 -->
 <script src="<%=request.getContextPath()%>/resources/bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->

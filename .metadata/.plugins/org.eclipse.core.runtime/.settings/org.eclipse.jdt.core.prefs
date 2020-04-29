@@ -1,4 +1,12 @@
 eclipse.preferences.version=1
+org.eclipse.jdt.core.classpathVariable.ECLIPSE_HOME=E\:/B_Util/3.Eclipse/eGovFrameDev-3.8.0-64bit/eclipse/
+org.eclipse.jdt.core.classpathVariable.FINDBUGS_ANNOTATIONS=E\:/B_Util/3.Eclipse/eGovFrameDev-3.8.0-64bit/eclipse/plugins/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1/lib/annotations.jar
+org.eclipse.jdt.core.classpathVariable.JRE_LIB=E\:/B_Util/2.Java/JDK1.8/jre/lib/rt.jar
+org.eclipse.jdt.core.classpathVariable.JRE_SRC=E\:/B_Util/2.Java/JDK1.8/src.zip
+org.eclipse.jdt.core.classpathVariable.JRE_SRCROOT=
+org.eclipse.jdt.core.classpathVariable.JSR305_ANNOTATIONS=E\:/B_Util/3.Eclipse/eGovFrameDev-3.8.0-64bit/eclipse/plugins/edu.umd.cs.findbugs.plugin.eclipse_3.0.1.20150306-5afe4d1/lib/jsr305.jar
+org.eclipse.jdt.core.classpathVariable.JUNIT_HOME=E\:/B_Util/3.Eclipse/eGovFrameDev-3.8.0-64bit/eclipse/plugins/org.junit_4.12.0.v201504281640/
+org.eclipse.jdt.core.classpathVariable.M2_REPO=C\:/maven_repository
 org.eclipse.jdt.core.codeComplete.visibilityCheck=enabled
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.8

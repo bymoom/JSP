@@ -39,7 +39,7 @@
     	  	<div class="card-header with-border">
     	  		<c:if test="${loginUser.authority eq 'ROLE_ADMIN' }" >
     	  			<button type="button" class="btn btn-primary" 
-    	  			onclick="OpenWindow('regist','회원등록',800,600);" >회원등록</button>
+    	  			onclick="OpenWindow('registForm.do','회원등록',800,600);" >회원등록</button>
     	  		</c:if>
     	  		<div id="keyword" class="card-tools" style="width:350px;">
 				  <div class="input-group row">		
@@ -51,10 +51,10 @@
 						<option value="e"  ${pageMaker.cri.searchType eq 'e' ? 'selected':''}>이메일</option>
 					</select>			
 					<input  class="form-control" type="text" name="keyword" 
-					placeholder="검색어를 입력하세요." value="${param.keyword }"/>
+						placeholder="검색어를 입력하세요." value="${param.keyword }"/>
 					<span class="input-group-append">
 						<button class="btn btn-primary" type="button" 
-						id="searchBtn" data-card-widget="search" onclick="searchList_go(1);">
+							id="searchBtn" data-card-widget="search" onclick="searchList_go(1);">
 							<i class="fa fa-fw fa-search"></i>
 						</button>
 					</span>
@@ -96,7 +96,7 @@
 	             		 --%>
 	             				<tr>
 	             					<%-- javascript:OpenWindow('url','제목','가로','세로') --%>
-	             					<td><a href="javascript:OpenWindow('detail?id=${member.id}','회원상세보기','800','600')">${member.id}</a></td>
+	             					<td><a href="javascript:OpenWindow('detail.do?id=${member.id}','회원상세보기','800','600')">${member.id}</a></td>
 	             					<td>${member.name}</td>
 	             					<td>${member.pwd}</td>
 	             					<td>${member.email}</td>

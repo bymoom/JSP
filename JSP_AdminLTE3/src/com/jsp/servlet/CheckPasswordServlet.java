@@ -10,10 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.jsp.dto.MemberVO;
 
-/**
- * Servlet implementation class CheckPasswordServlet
- */
-@WebServlet("/member/checkPassword")
+//@WebServlet("/member/checkPassword")
 public class CheckPasswordServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
 import com.jsp.request.MemberRegistRequest;
 import com.jsp.service.MemberServiceImpl;
-import com.jsp.utils.ViewResolver;
 
-@WebServlet("/member/modify")
+//@WebServlet("/member/modify")
 public class MemberModifyServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -29,7 +29,6 @@ public class MemberModifyServlet extends HttpServlet {
 		MemberVO member = null;
 		try {
 			member = MemberServiceImpl.getInstance().getMember(id);
-			System.out.println(member.getName());
 		} catch (SQLException e) {
 			e.printStackTrace();
 			url = "error/500_error";
